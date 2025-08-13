@@ -9,7 +9,7 @@ $sql = "CREATE TABLE IF NOT EXISTS productos (
 )";
 $pdo->exec($sql);
 
-// Insertar datos de ejemplo
+// Insertar datos 
 $productos = [
     ['Laptop', 1200.50],
     ['Mouse', 25.75],
