@@ -1,1 +1,4 @@
-ACTIVIDADES PARA PROGRAMACION 2 2025 X SEBASTIAN BRUCELARIO
+--------------------------------------------------------PROGRAMACION 2--------------------------------------------------------
+                                                            2025 
+                                                    INSTITUTO ZONA OESTE 
+                                                DOCENTE: SEBASTIAN BRUCELARIO
