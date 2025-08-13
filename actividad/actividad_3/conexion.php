@@ -1,8 +1,8 @@
 <?php
 $host = "localhost";
-$dbname = "pruebas"; // vamos a usar una BD de ejemplo
+$dbname = "pruebas"; 
 $user = "phpuser";
-$pass = "franco"; // root en Debian con socket normalmente no necesita clave
+$pass = "franco"; 
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
