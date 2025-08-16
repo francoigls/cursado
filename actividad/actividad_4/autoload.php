@@ -1,13 +1,18 @@
 <?php
 
-    spl_autoload_register(function($clase){
+spl_autoload_register(function($clase) {
+    $directorios = [
+        __DIR__ . '/src/',
+        __DIR__ . '/modelos/'
+    ];
 
-        $ruta = __DIR__ . '/src/' . str_replace('\\', '/', $clase) . '.php';
+    foreach ($directorios as $directorio) {
+        $ruta = $directorio . str_replace('\\', '/', $clase) . '.php';
         if (is_readable($ruta)) {
             require_once $ruta;
-        } else {
-            echo "el archivo no existe";
+            return;
         }
-    });
+    }
 
-?>
+    throw new Exception("No se pudo cargar la clase: $clase");
+});

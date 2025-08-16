@@ -6,6 +6,34 @@ use Modelos\Usuario;
 
 $usuario = new Usuario();
 echo $usuario->decirHola();
+$usuario->name = "Franco";
+$usuario->ObtenerNombres();
+
+use base\Persona;
+use Modelos\Empleado;
+
+$empleado = new Empleado();
+
+echo $empleado->trabajar();
+
+
+use controladores\controladorUsuario;
+
+$controlador = new ControladorUsuario();
+echo $controlador->inicio();
+
+
+use Utilidades\Matematica;
+
+echo Matematica::sumar(3, 4);
+
+
+use configuracion\ConfiguracionApp;
+
+echo "llamado a " . ConfiguracionApp::NOMBRE_APP;
+
+
+
 
 ?>
 
