@@ -11,9 +11,7 @@ error_reporting(E_ALL);              // Reportar TODOS los errores
 ini_set("log_errors", 1);            // Guardar errores en archivo
 ini_set("error_log", __DIR__ . "/php-error.log");  // Se crea al lado de index.php
 
-/*
-requerimientos
-*/
+/* requerimientos */
 require_once "modelos/connection.php";
 
 echo '<pre>'; print_r(Connection::Connect()); echo '</pre>';
