@@ -25,12 +25,8 @@ if(count($routesArray) == 1 && isset($_SERVER['REQUEST_METHOD'])){
         /*GET */
 
         if($_SERVER['REQUEST_METHOD'] == "GET"){
-                $json = array(
-                        'status'=> 200,
-                        'result'=> 'SOLICITUD GET'
-                );
-                 http_response_code($json["status"]);
-                 echo json_encode($json);
+          include __DIR__ . "/servicios/get.php";
+
         };
 
          /*POST */

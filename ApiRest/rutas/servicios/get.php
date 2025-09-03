@@ -2,10 +2,27 @@
 
 require_once "controladores/get.controller.php";
 
-$table = $routesArray[1];
+$table = explode("?", $routesArray[1])[0];
+
+$select = $_GET["select"] ?? "*";
 
 $response = new GetController();
-$response -> getData($table);
+
+
+/*       peticion GET con filtro  */ 
+
+
+if(isset($_GET["linkTo"]) && isset($_GET["equalTo"])){
+    
+    $response -> getDataFilter($table, $select,$_GET["linkTo"],$_GET["equalTo"]);
+}else{
+
+    /*   peticion GET sin filtro  */ 
+
+    $response -> getData($table, $select);
+
+}
+
 
 
 
