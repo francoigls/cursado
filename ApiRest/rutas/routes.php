@@ -22,6 +22,9 @@ if (count($routesArray) == 0) {
 
 if(count($routesArray) == 1 && isset($_SERVER['REQUEST_METHOD'])){
 
+
+        $table = explode("?", $routesArray[1])[0];
+
         /*GET */
 
         if($_SERVER['REQUEST_METHOD'] == "GET"){
@@ -32,33 +35,18 @@ if(count($routesArray) == 1 && isset($_SERVER['REQUEST_METHOD'])){
          /*POST */
 
         if($_SERVER['REQUEST_METHOD'] == "POST"){
-                $json = array(
-                        'status'=> 200,
-                        'result'=> 'SOLICITUD POST'
-                );
-                 http_response_code($json["status"]);
-                 echo json_encode($json);
+                include __DIR__ . "/servicios/post.php";
         };
 
          /*DELETE */
 
         if($_SERVER['REQUEST_METHOD'] == "DELETE"){
-                $json = array(
-                        'status'=> 200,
-                        'result'=> 'SOLICITUD DELETE'
-                );
-                 http_response_code($json["status"]);
-                 echo json_encode($json);
+                include __DIR__ . "/servicios/delete.php";
         };
 
          /*PUT */
 
         if($_SERVER['REQUEST_METHOD'] == "PUT"){
-                $json = array(
-                        'status'=> 200,
-                        'result'=> 'SOLICITUD PUT'
-                );
-                 http_response_code($json["status"]);
-                 echo json_encode($json);
+                 include __DIR__ . "/servicios/put.php";
         };
 }
