@@ -17,5 +17,10 @@
 
 
     //obtencion de todos los usuarios
-    $usuario = $objUsuario->GetUsuario();
+    //$usuario = $objUsuario->GetUsuarios();
+
+
+    $usuario = $objUsuario->GetUsuario(1);
+    print_r("<pre>");
     print_r($usuario);
+    print_r("</pre>");

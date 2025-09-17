@@ -2,6 +2,7 @@
 
     require_once ("autoload.php");
     class Usuario extends Conexion{
+        private $intId;
         private $strNombre;
         private $intTelefono;
         private $strEmail;
@@ -49,11 +50,29 @@
    }
 
 
-        public function GetUsuario(){
+        public function GetUsuarios(){
                 try {
                     $sql = "SELECT * FROM usuario";
                     $execute = $this->conexion->query($sql);
-                    $request = $execute->fetchAll(PDO::FETCH_ASSOC);
+                    $request = $execute->fetchAll(PDO::FETCH_ASSOC);//obtencion a travez de un array y CLASS si quiero el objeto :)
+                    return $request;
+                }catch (Exception $e) {
+
+                echo "Error: ".$e->getLine();
+              
+                  }
+            }
+
+
+         public function GetUsuario($id){
+                try {
+                    $this->intId = $id;
+                    $sql = "SELECT * FROM usuario WHERE idUsuario = :idUsuario";
+                    $arrData = array(":idUsuario" => $this->intId);
+                    $query = $this->conexion->prepare($sql);
+                    $query->execute($arrData);
+                    $request = $query->fetch(PDO::FETCH_ASSOC);//obtencion a travez de un array y CLASS si quiero el objeto :)
+                    $query->closeCursor();
                     return $request;
                 }catch (Exception $e) {
 
@@ -61,5 +80,7 @@
               
             }
             }
+
+
         }//end class
 
