@@ -46,8 +46,8 @@
 
                 echo "Error: ".$e->getLine();
               
-            }
-   }
+             }
+            }//end function
 
 
         public function GetUsuarios(){
@@ -61,9 +61,9 @@
                 echo "Error: ".$e->getLine();
               
                   }
-            }
+            }//end function
 
-
+                //llamar a usuarios segun ide
          public function GetUsuario($id){
                 try {
                     $this->intId = $id;
@@ -78,9 +78,55 @@
 
                 echo "Error: ".$e->getLine();
               
-            }
+                }
+            }//end function
+
+
+            //actualizar usuario
+            public function updateUsuario(int $id, string $nombre, int $telefono, string $email, string $direccion){
+
+            try {
+            $this->intId = $id;    
+            $this->strNombre = $nombre;
+            $this->intTelefono = $telefono;
+            $this->strEmail = $email;
+            $this->strDireccion = $direccion;
+
+
+            $sql = "UPDATE usuario SET nombre = :nom, telefono = :tel, email = :email, direccion = :dir WHERE idUsuario = :id";
+            $update = $this->conexion->prepare($sql);
+            $arrData = array (
+                ":nom" => $this->strNombre,
+                ":tel" => $this->intTelefono,
+                ":email" => $this->strEmail,
+                ":dir" => $this->strDireccion,
+                ":id"=>$this->intId
+            );
+
+                $resupdate = $update->execute($arrData);
+                $update->closeCursor();
+                return $resupdate;
+            }catch (Exception $e) {
+
+            echo "Error en línea ".$e->getLine().": ".$e->getMessage();
+              
+             }
             }
 
+
+            public function delUsuario(int $id){
+
+                try {
+                    $this->intId = $id;
+                    $sql = "DELETE  FROM  usuario WHERE idusuario = :id";
+                    $delete = $this->conexion->prepare($sql);
+                    $arrData = array(":id" => $this->intId);
+                    $del = $delete->execute($arrData);
+                    return $del;
+                } catch (\Throwable $th) {
+                     echo "Error en línea ".$e->getLine().": ".$e->getMessage();
+                }
+            }//end function delUsuario
 
         }//end class
 
