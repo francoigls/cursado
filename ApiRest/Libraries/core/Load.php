@@ -1,0 +1,17 @@
+<?php
+
+//mayusculas                 
+$controller = ucwords($controller);
+$controllerfile = "Controllers/".$controller.".php"; 
+    if(file_exists($controllerfile)){
+         require_once($controllerfile);
+          $controller = new $controller();
+           if(method_exists($controller, $method)){
+             $controller->{$method}($params); 
+            }else{ 
+                require_once("Controllers/Error.php"); 
+            }//end validacion de methods 
+                }else{ 
+                    require_once("Controllers/Error.php"); 
+                 }//end file exists
+
