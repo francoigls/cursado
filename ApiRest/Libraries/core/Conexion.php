@@ -25,4 +25,4 @@
        return $this->conect;
         }
     }
-    $conexiondb = new conexion();
+    $conexiondb = new Conexion();
